@@ -15,6 +15,8 @@ class PokeFetch extends Component {
     }
   }
 
+  // fetch api call for pokemon image and name
+
   fetchPokemon() {
     let min = Math.ceil(1);
     let max = Math.floor(152);
@@ -36,6 +38,8 @@ class PokeFetch extends Component {
       this.timer = setInterval(this.tick, 1000);
   }
 
+  // timer function that will clear interval (clear the DOM) once timer hits 0. This will clear image, reset timer, and reset api fetch call.
+
   tick () {
     if (this.state.timerCountDown > 0) {
       this.setState({timerCountDown : this.state.timerCountDown - 1})
@@ -45,6 +49,8 @@ class PokeFetch extends Component {
       this.setState({ answer: false });
     }
   }
+
+  // return the sprite, use contrast (contrast is used to darken image, thanks W3 schools!) and display name. Added text to incorporate more usability
 
   render() {
     return (
