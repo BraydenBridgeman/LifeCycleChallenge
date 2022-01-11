@@ -15,18 +15,6 @@ class PokeFetch extends Component {
     }
   }
 
-  // tick function for timer and clearing interval for image/answer/timer
-
-  tick () {
-    if (this.state.timerCountDown > 0) {
-      this.setState({timerCountDown: this.state.timerCountDown - 1})
-    } else {
-      clearInterval (this.timer);
-      this.setState({shadowOn: 100});
-      this.setState({answer: false});
-    }
-  }
-
   fetchPokemon() {
     let min = Math.ceil(1);
     let max = Math.floor(152);
@@ -42,12 +30,20 @@ class PokeFetch extends Component {
         })
       })
       .catch((err) => console.log(err))
-
-      // Timer and shadowOn and answer this.setStates
       this.setState({ timerCountDown: 10 });
       this.setState({ shadowOn: 0 });
       this.setState({ answer: true });
       this.timer = setInterval(this.tick, 1000);
+  }
+
+  tick () {
+    if (this.state.timerCountDown > 0) {
+      this.setState({timerCountDown : this.state.timerCountDown - 1})
+    } else {
+      clearInterval (this.timer);
+      this.setState({ shadowOn: 100 });
+      this.setState({ answer: false });
+    }
   }
 
   render() {
